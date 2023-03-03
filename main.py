@@ -1,17 +1,16 @@
-# created
+# require libraries
 import pandas as pd
+from time import time as record
+
 import Algorithms as alg
-from time import time_ns as record
 
 
 class main():
     def __init__(self) -> None:
-        print("""Welcome
-              i am a program to solve Fibonacci using two algorithms :
-              Divide and Conquer Algorithms 
-              Dynamic Programming""")
+        print("Welcome\n\ti am a program to solve Fibonacci using two algorithms :")
+        print("\tDivide and Conquer Algorithms\tDynamic Programming")
 
-        print("then i will create a dataset contain each numbers execute duration time for both algorithms")
+        print("\tthen i will create a dataset contain each numbers execute duration time for both algorithms")
 
     def Fibonacci(self, num):
         calculated_time = []
@@ -34,12 +33,12 @@ class main():
 
     def csv_output(self, list):
         df = pd.DataFrame(data=list, columns=[
-                          "Number", "Devide-Conquer", "Dynamic-Programming", "difference"])
+                          "Number", "Devide-Conquer", "Dynamic-Programming", "Difference"])
         df.to_csv("output.csv", index=False)
         del df
 
     def start(self):
-        number = int(input("\n\n calculating Fibonacci from 0 to :  "))
+        number = int(input("\n\n Calculating Fibonacci from 0 to :  "))
         output_list = self.Fibonacci(number)
         self.csv_output(output_list)
 
