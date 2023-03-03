@@ -1,4 +1,5 @@
 # created
+import pandas as pd
 import Algorithms as alg
 from time import time_ns as record
 
@@ -17,21 +18,27 @@ class main():
     def Fibonacci(self, num):
         calculated_time = []
 
-        for nums in range(0, num+1):
+        for cur_num in range(0, num+1):
             start = record()
-            alg.devide_conquer(nums)
+            alg.devide_conquer(cur_num)
             end = record()
             devide_duration = end-start
 
             start = record()
-            alg.dynamic_programming(nums)
+            alg.dynamic_programming(cur_num)
             end = record()
             dynamic_duration = end-start
 
-            calculated_time.append[num, devide_duration, dynamic_duration]
-            
-            return calculated_time
+            calculated_time.append([cur_num, devide_duration, dynamic_duration, abs(
+                devide_duration-dynamic_duration)])
+
+        return calculated_time
+
+    def csv_output(self, list):
+        df = pd.DataFrame(data=list, columns=[
+                          "Number", "Devide-Conquer", "Dynamic-Programming", "difference"])
+        df.to_csv("output.csv", index=False)
 
 
 program = main()
-program.Fibonacci(9)
+print(program.Fibonacci(5))
