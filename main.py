@@ -13,8 +13,6 @@ class main():
 
         print("then i will create a dataset contain each numbers execute duration time for both algorithms")
 
-        self.number = int(input("\n\n calculating Fibonacci from 0 to :  "))
-
     def Fibonacci(self, num):
         calculated_time = []
 
@@ -38,7 +36,13 @@ class main():
         df = pd.DataFrame(data=list, columns=[
                           "Number", "Devide-Conquer", "Dynamic-Programming", "difference"])
         df.to_csv("output.csv", index=False)
+        del df
+
+    def start(self):
+        number = int(input("\n\n calculating Fibonacci from 0 to :  "))
+        output_list = self.Fibonacci(number)
+        self.csv_output(output_list)
 
 
 program = main()
-print(program.Fibonacci(5))
+program.start()
